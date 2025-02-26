@@ -31,31 +31,16 @@ function Box(height, width, length, material) {
   this.content = [];
 }
 
-Box.prototype.addNewBook = function (
-  title,
-  numOfChapters,
-  author,
-  numOfPages,
-  publisher,
-  numOfCopies
-) {
-  const newBook = new Book(
-    title,
-    numOfChapters,
-    author,
-    numOfPages,
-    publisher,
-    numOfCopies
-  );
-  this.content.push(newBook);
-};
-
 Box.prototype.addBook = function (newBook) {
   this.content.push(newBook);
 };
 
 Box.prototype.countBooks = function () {
-  return this.content.length;
+  let booksCount = 0;
+  for (const book of this.content) {
+    booksCount += book.numOfCopies;
+  }
+  return booksCount;
 };
 
 Box.prototype.deleteBook = function (bookTitle) {
@@ -64,5 +49,3 @@ Box.prototype.deleteBook = function (bookTitle) {
     this.content.splice(foundIndex, 1);
   }
 };
-
-
